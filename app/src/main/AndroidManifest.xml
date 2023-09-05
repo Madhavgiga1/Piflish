@@ -23,7 +23,7 @@
             android:name=".ui.activities.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="false">
 
         </activity>

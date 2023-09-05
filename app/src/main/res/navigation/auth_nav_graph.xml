@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/authHomeFragment">
+
+    <fragment
+        android:id="@+id/authHomeFragment"
+        android:name="com.example.hacknosis.ui.fragment.authetication.AuthHomeFragment"
+        android:label="fragment_auth_home"
+        tools:layout="@layout/fragment_auth_home" >
+        <action
+            android:id="@+id/action_authHomeFragment_to_signupDoctorFragment"
+            app:destination="@id/signupDoctorFragment" />
+        <action
+            android:id="@+id/action_authHomeFragment_to_loginPatientFragment"
+            app:destination="@id/loginPatientFragment" />
+        <action
+            android:id="@+id/action_authHomeFragment_to_signupPatientFragment"
+            app:destination="@id/signupPatientFragment" />
+        <action
+            android:id="@+id/action_authHomeFragment_to_loginDoctorFragment"
+            app:destination="@id/loginDoctorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupDoctorFragment"
+        android:name="com.example.hacknosis.ui.fragment.authetication.SignupDoctorFragment"
+        android:label="fragment_signup_patient"
+        tools:layout="@layout/fragment_signup_patient" />
+    <fragment
+        android:id="@+id/loginPatientFragment"
+        android:name="com.example.hacknosis.ui.fragment.authetication.LoginPatientFragment"
+        android:label="LoginPatientFragment" />
+    <fragment
+        android:id="@+id/signupPatientFragment"
+        android:name="com.example.hacknosis.ui.fragment.authetication.SignupPatientFragment"
+        android:label="SignupPatientFragment" />
+    <fragment
+        android:id="@+id/loginDoctorFragment"
+        android:name="com.example.hacknosis.ui.fragment.authetication.LoginDoctorFragment"
+        android:label="LoginDoctorFragment" />
+</navigation>

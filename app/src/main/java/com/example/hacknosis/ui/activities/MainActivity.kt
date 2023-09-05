@@ -1,7 +1,8 @@
-package com.example.hacknosis
+package com.example.hacknosis.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hacknosis.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

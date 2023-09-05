@@ -1,4 +1,4 @@
-package com.example.hacknosis.ui.fragment
+package com.example.hacknosis.ui.fragment.authetication
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
