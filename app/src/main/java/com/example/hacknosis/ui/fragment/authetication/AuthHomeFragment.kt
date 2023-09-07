@@ -53,19 +53,7 @@ class AuthHomeFragment : Fragment() {
     }
     private fun handleRoleSelection(isDoctor: Boolean,didsignup: Boolean) {
         val navController=findNavController()
-       /*if(isDoctor&&didsignup){
-           navController.navigate()
-       }
-        else if(isDoctor==true&&didsignup==false){
-           navController.navigate(R.id.action_authHomeFragment_to_loginDoctorFragment)
 
-       }
-        else if(isDoctor==false&&didsignup==true){
-           navController.navigate(R.id.action_authHomeFragment_to_signupPatientFragment)
-       }
-        else{
-           navController.navigate(R.id.action_authHomeFragment_to_loginPatientFragment)
-       }*/
         val actionid= when {
             isDoctor&&didsignup->R.id.action_authHomeFragment_to_signupDoctorFragment
             isDoctor&&!didsignup->R.id.action_authHomeFragment_to_loginDoctorFragment

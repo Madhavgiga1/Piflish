@@ -15,7 +15,7 @@ class LoginDoctorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_login_doctor, container, false)
+        val view=inflater.inflate(R.layout.fragment_login_doctor, container, false)
+        return view
     }
 }
