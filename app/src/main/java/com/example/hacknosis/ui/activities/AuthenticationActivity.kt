@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.hacknosis.R
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +21,8 @@ class AuthenticationActivity : AppCompatActivity() {
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController= navHostFragment.findNavController()
 
-
+        //val database= FirebaseDatabase.getInstance().getReference("Users")
+        //database.child("1").setValue("patientinit")
 
     }
     override fun onSupportNavigateUp(): Boolean {

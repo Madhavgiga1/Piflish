@@ -1,5 +1,9 @@
 package com.example.hacknosis.viewmodels
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hacknosis.models.Patient
@@ -12,30 +16,33 @@ import com.google.firebase.database.ValueEventListener
 class PatientViewModel: ViewModel() {
     var user=MutableLiveData<Patient>()
 
-    fun getUser(){
-        val userUid = FirebaseAuth.getInstance().currentUser?.uid
+    fun getUser() {
+        val userUid = FirebaseAuth.getInstance().currentUser
+        var email:String?=null
+        email=userUid?.email
+        if(email!=null) {
+            val database = FirebaseDatabase.getInstance()
+            database.getReference(encodeEmail(email))
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        var patient = dataSnapshot.getValue(Patient::class.java)
+                        if(patient!=null){
+                            user.value=patient!!
+                        }
 
-// Assuming you have a reference to the Firebase Database
-        val database = FirebaseDatabase.getInstance()
-        val usersRef = database.getReference("users")
-
-// Retrieve the user's data using their UID
-        userUid?.let { uid ->
-            usersRef.child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        // Parse the user data
-                        val userData = dataSnapshot.getValue(Patient::class.java)
-
-                        // Now you have the user data, you can use it as needed
                     }
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // Handle errors if needed
-                }
-            })
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.w(TAG, "Failed to read value.", error.toException())
+                    }
+                })
         }
+    }
+    private fun encodeEmail(email: String): String{
+        return email.replace(".", ",")
+    }
+
+    private fun decodeEmail(encodedEmail: String): String {
+        return encodedEmail.replace(",", ".")
     }
 
 
